@@ -1,0 +1,166 @@
+### User register
+POST http://localhost:4000/user-api/users
+Content-Type: application/json
+
+{
+    "firstName" : "pushpa",
+    "lastName" : "Karlapati",
+    "email" : "pushpa@gmail.com",
+    "password" : "pushpa",
+    "profileImageURL" : "abc.png"
+}
+
+
+
+### Author register
+POST http://localhost:4000/author-api/users
+Content-Type: application/json
+
+{
+    "firstName" : "hari",
+    "lastName" : "Karlapati",
+    "email" : "hari1@gmail.com",
+    "password" : "1234567890",
+    "profileImageURL" : "xyz.jpg"
+}
+
+
+
+### User Login
+POSt http://localhost:4000/common-api/login
+Content-Type: application/json
+
+{
+    "email" : "pushpa@gmail.com",
+    "password" : "1228"
+}
+
+
+
+### Author Login
+POST http://localhost:4000/common-api/login
+Content-Type: application/json
+
+{
+    "email" : "hari1@gmail.com",
+    "password" : "1234567890"
+}
+
+
+
+###Create article (AUTHOR)
+POST http://localhost:4000/author-api/articles
+Content-Type: application/json
+
+{
+    "author" : "6989f2090453b8e88ad9c734",
+    "title" : "haru",
+    "Category" : "lalli",
+    "Content" : "applets"
+}
+
+
+
+###Read Articles of Authors
+GET http://localhost:4000/author-api/articles/6989f2090453b8e88ad9c734
+
+
+
+
+###Edit the Articles
+PUT http://localhost:4000/author-api/articles
+Content-Type: application/json
+
+{
+    "author" : "6989f2090453b8e88ad9c734",
+    "title" : "Orange",
+    "Category" : "lalli",
+    "Content" : "applets",
+    "articleId" : "6989f2c70453b8e88ad9c73f"
+}
+
+
+
+### Delete the article
+PUT http://localhost:4000/author-api/articles/delete
+Content-Type: application/json
+
+{
+    "author" : "6989679bbc9a0015fe5e19c1",
+    "articleId" : "6989a932187167ffebc1b6b0"
+}
+
+
+
+
+### Read all articles of User
+GET http://localhost:4000/user-api/articles/6989675fbc9a0015fe5e19bf
+
+
+
+
+### Add a comment
+PUT http://localhost:4000/user-api/articles
+Content-Type: application/json
+
+{
+    "userId" : "6989675fbc9a0015fe5e19bf",
+    "articleId" : "6989a932187167ffebc1b6b0",
+    "comment" : "Article is about Backend"
+}
+
+
+
+###logout 
+GET http://localhost:4000/common-api/logout
+
+
+
+
+### Admin Auth
+POST http://localhost:4000/common-api/login
+Content-Type: application/json
+
+    {
+    "email" : "admin@gmail.com",
+    "password" : "admin"
+    }
+
+
+
+
+###
+GET http://localhost:4000/test
+
+
+
+
+### New password
+PUT http://localhost:4000/common-api/change-password
+Content-Type: application/json
+
+{
+    "newPassword" : "1228",
+    "email" : "pushpa@gmail.com",
+    "currentPassword" : "9989668210"
+}
+
+
+
+### Block User by Admin
+PUT http://localhost:4000/admin-api/block
+Content-Type: application/json
+
+{
+    "email" : "pushpa@gmail.com"
+}
+
+
+
+### Unblock User by Admin
+PUT http://localhost:4000/admin-api/unblock
+Content-Type: application/json
+
+{
+    "email" : "pushpa@gmail.com"
+}

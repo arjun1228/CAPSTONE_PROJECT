@@ -3,10 +3,10 @@ POST http://localhost:4000/user-api/users
 Content-Type: application/json
 
 {
-    "firstName" : "pushpa",
+    "firstName" : "Alu",
     "lastName" : "Karlapati",
-    "email" : "pushpa@gmail.com",
-    "password" : "pushpa",
+    "email" : "Alu@gmail.com",
+    "password" : "1228",
     "profileImageURL" : "abc.png"
 }
 
@@ -31,7 +31,7 @@ POSt http://localhost:4000/common-api/login
 Content-Type: application/json
 
 {
-    "email" : "pushpa@gmail.com",
+    "email" : "Alu@gmail.com",
     "password" : "1228"
 }
 
@@ -47,13 +47,13 @@ Content-Type: application/json
 }
 
 
-
+###AUTHOR OPERATIONS
 ###Create article (AUTHOR)
 POST http://localhost:4000/author-api/articles
 Content-Type: application/json
 
 {
-    "author" : "6989f2090453b8e88ad9c734",
+    "author" : "69ae8afbbae3ade836f814b0",
     "title" : "haru",
     "Category" : "lalli",
     "Content" : "applets"
@@ -62,7 +62,7 @@ Content-Type: application/json
 
 
 ###Read Articles of Authors
-GET http://localhost:4000/author-api/articles/6989f2090453b8e88ad9c734
+GET http://localhost:4000/author-api/articles/69ae8afbbae3ade836f814b0
 
 
 
@@ -72,29 +72,28 @@ PUT http://localhost:4000/author-api/articles
 Content-Type: application/json
 
 {
-    "author" : "6989f2090453b8e88ad9c734",
-    "title" : "Orange",
-    "Category" : "lalli",
-    "Content" : "applets",
-    "articleId" : "6989f2c70453b8e88ad9c73f"
-}
-
-
-
-### Delete the article
-PUT http://localhost:4000/author-api/articles/delete
-Content-Type: application/json
-
-{
     "author" : "6989679bbc9a0015fe5e19c1",
+    "title" : "BAhu",
+    "Category" : "Movie",
+    "Content" : "Rana",
     "articleId" : "6989a932187167ffebc1b6b0"
 }
 
 
 
+###Soft Delete
+PATCH http://localhost:4000/author-api/articles/69aec202bae3ade836f814fa/status
+Content-Type: application/json
 
+{
+    "isArticleActive": true
+}
+
+
+
+###USER OPERATIONS
 ### Read all articles of User
-GET http://localhost:4000/user-api/articles/6989675fbc9a0015fe5e19bf
+GET http://localhost:4000/user-api/articles
 
 
 
@@ -104,9 +103,9 @@ PUT http://localhost:4000/user-api/articles
 Content-Type: application/json
 
 {
-    "userId" : "6989675fbc9a0015fe5e19bf",
-    "articleId" : "6989a932187167ffebc1b6b0",
-    "comment" : "Article is about Backend"
+    "userId" : "698accf5021ed075f44f0032",
+    "articleId" : "69aec202bae3ade836f814fa",
+    "comment" : "Article is about Lalli and Haru"
 }
 
 
@@ -129,7 +128,7 @@ Content-Type: application/json
 
 
 
-###
+###Invalid Path Req
 GET http://localhost:4000/test
 
 
@@ -146,7 +145,7 @@ Content-Type: application/json
 }
 
 
-
+###ADMIN OPERATIONS
 ### Block User by Admin
 PUT http://localhost:4000/admin-api/block
 Content-Type: application/json

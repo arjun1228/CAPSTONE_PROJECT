@@ -2,12 +2,12 @@ import { UserTypeModel } from "../Models/UserModel.js"
 import { ArticleModel } from "../Models/ArticleModel.js"
 
 export const checkAuthor = async (req,res,next) => {
-    //get author id
-    let authorId = req.params?.authorId  || req.body?.author
+    //get author id from token, params, or body
+    let authorId = req.user?.userId || req.params?.authorId || req.body?.author
     //verify author
     let verifyAuthor = await UserTypeModel.findById(authorId)
      if(!verifyAuthor) {
-       res.status(400).json({message:"Invalid Author"})
+       return res.status(400).json({message:"Invalid Author"})
     }
     ///if author is found but role is different 
     if(verifyAuthor.role !== "AUTHOR") {

@@ -24,18 +24,24 @@ export const register  =async (userObj) => {
 
 //authenticate function
 export const authenticate = async ({email,password}) => {
+    console.log("🔐 Authenticate attempt:", { email, password: password ? "***" : "empty" })
+    
     //check user with email and role
     const user = await UserTypeModel.findOne({email})
+    console.log("👤 User found:", user ? `Yes (${user.email})` : "No")
+    
     if(!user) {
-        const err = new Error("Invalid email")
+        const err = new Error("Incorrect email. Please check your email address.")
         err.status = 401;
         throw err
     }
 
     //compare passwords
     const isMatch = await bcrypt.compare(password,user.password)
+    console.log("🔑 Password match:", isMatch)
+    
     if(!isMatch) {
-        const err = new Error("Invalid Password")
+        const err = new Error("Incorrect password. Please try again.")
         err.status = 401
         throw err
     }
@@ -49,7 +55,17 @@ export const authenticate = async ({email,password}) => {
 
 
     //generation token
-    const token = jwt.sign({userId: user._id,role: user.role, email:user.email}, process.env.JWT_SECRET, {expiresIn : "1h"})
+    const token = jwt.sign(
+        {
+            userId: user._id,
+            role: user.role,
+            email: user.email,
+            firstName: user.firstName,
+            profileImageURL: user.profileImageURL,
+        },
+        process.env.JWT_SECRET,
+        { expiresIn: "1h" }
+    )
     const userObj = user.toObject();
     delete userObj.password;
 

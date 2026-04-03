@@ -29,7 +29,9 @@ const articleSchema = new Schema({
     },
     Content :{
         type : String,
-        required : [true,"Content is required"]
+        required : [true,"Content is required"],
+        trim: true,
+        minlength: [1, "Content must be at least 1 character"]
     },
     Comments : [userCommentSchema],
     isArticleActive : {

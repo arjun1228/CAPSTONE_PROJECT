@@ -158,7 +158,12 @@ function ArticleByID() {
         <h1 className={`${articleMainTitle} uppercase`}>{article.title}</h1>
 
         <div className={articleAuthorRow}>
-          <div className={authorInfo}>✍️ {article.author?.firstName || "Author"}</div>
+          <div className={`${authorInfo} flex items-center gap-2`}>
+            <div className='flex h-6 w-6 items-center justify-center rounded-full bg-slate-200 text-xs font-bold text-slate-600'>
+              {(article.author?.firstName?.charAt(0) || 'A').toUpperCase()}
+            </div>
+            <span>{article.author?.firstName || "Unknown Author"} {article.author?.lastName || ""}</span>
+          </div>
 
           <div>{formatDate(article.createdAt)}</div>
         </div>

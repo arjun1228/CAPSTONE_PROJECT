@@ -116,7 +116,12 @@ function UserDashboard() {
                 <p className='mt-3 line-clamp-3 text-sm leading-relaxed text-slate-600'>{snippet}</p>
 
                 <div className='mt-5 flex items-center justify-between border-t border-slate-100 pt-4'>
-                 
+                  <div className='flex items-center gap-2 text-sm font-medium text-slate-700'>
+                    <div className='flex h-6 w-6 items-center justify-center rounded-full bg-slate-200 text-xs font-bold text-slate-600'>
+                      {(article.author?.firstName?.charAt(0) || 'A').toUpperCase()}
+                    </div>
+                    <span>{article.author?.firstName || 'Unknown Author'} {article.author?.lastName || ''}</span>
+                  </div>
                   <button
                     type='button'
                     onClick={() => openArticle(article)}

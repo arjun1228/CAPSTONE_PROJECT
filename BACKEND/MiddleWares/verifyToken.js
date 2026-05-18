@@ -14,7 +14,7 @@ export const verifyToken = (...allowedRoles) => {
 
             //check if role is allowed (only if roles were specified)
             if(allowedRoles.length > 0 && !allowedRoles.includes(decodedToken.role)) {
-                return res.status(403).json({message:"Forbidden. You don't have permission"})
+                return res.status(403).json({error:`Forbidden. Token role is ${decodedToken.role}, required: ${allowedRoles.join(',')}`})
             }
 
             // attach user info to request for use in routes

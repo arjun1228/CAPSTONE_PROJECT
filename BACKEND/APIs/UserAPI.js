@@ -55,7 +55,7 @@ userRoute.post("/users",upload.single("profileImageURL"),async (req, res, next) 
 //read all articles (PROTECTED ROUTE)
 userRoute.get('/articles', verifyToken("USER"), async(req, res) =>{
     //only need to verify user is authenticated, no specific user check needed
-  let articles = await ArticleModel.find({isArticleActive: true}).populate("Comments.user","email firstName")
+  let articles = await ArticleModel.find({isArticleActive: true}).populate("author", "firstName lastName email").populate("Comments.user","email firstName")
     //send res
     res.status(200).json({message: "All Articles are", payload: articles})
 })

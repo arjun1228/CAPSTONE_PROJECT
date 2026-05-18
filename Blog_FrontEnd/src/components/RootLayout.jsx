@@ -24,7 +24,11 @@ function RootLayout() {
     checkAuth()
   }, [checkAuth, currentUser, isAuthenticated])
   if (!isAuthChecked || loading) {
-    return <p> Loading....</p>
+    return (
+      <div className='flex min-h-screen items-center justify-center bg-slate-50'>
+        <p className='rounded-md bg-slate-800 px-6 py-3 text-sm font-medium text-white shadow-lg'>Checking access...</p>
+      </div>
+    )
   }
 
   return (

@@ -101,6 +101,7 @@ function WriteArticle() {
             <option value="programming">Programming</option>
             <option value="ai">AI</option>
             <option value="web-development">Web Development</option>
+            <option value="others">Others</option>
           </select>
 
           {errors.category && (

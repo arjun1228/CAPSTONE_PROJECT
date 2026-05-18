@@ -119,7 +119,6 @@ export const useAuth = create(
       partialize: (state) => ({
         currentUser: state.currentUser,
         isAuthenticated: state.isAuthenticated,
-        isAuthChecked: state.isAuthChecked,
       }),
     }
   )

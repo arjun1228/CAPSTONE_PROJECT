@@ -217,23 +217,24 @@ function Register() {
                 type='file'
                 accept='image/png, image/jpeg'
                 className='block w-full cursor-pointer rounded-lg border-2 border-dashed border-slate-300 bg-slate-50 px-4 py-3 text-sm text-slate-600 file:mr-3 file:rounded-lg file:border-0 file:bg-cyan-600 file:px-3 file:py-1.5 file:text-xs file:font-semibold file:text-white hover:border-slate-400 transition'
-                {...register('profileImageURL')}
-                onChange={(e) => {
-                  const file = e.target.files[0]
-                  if (file) {
-                    if (!['image/jpeg', 'image/png'].includes(file.type)) {
-                      setError('Only JPG or PNG allowed')
-                      return
+                {...register('profileImageURL', {
+                  onChange: (e) => {
+                    const file = e.target.files[0]
+                    if (file) {
+                      if (!['image/jpeg', 'image/png'].includes(file.type)) {
+                        setError('Only JPG or PNG allowed')
+                        return
+                      }
+                      if (file.size > 2 * 1024 * 1024) {
+                        setError('File size must be less than 2MB')
+                        return
+                      }
+                      const previewUrl = URL.createObjectURL(file)
+                      setPreview(previewUrl)
+                      setError(null)
                     }
-                    if (file.size > 2 * 1024 * 1024) {
-                      setError('File size must be less than 2MB')
-                      return
-                    }
-                    const previewUrl = URL.createObjectURL(file)
-                    setPreview(previewUrl)
-                    setError(null)
                   }
-                }}
+                })}
               />
               <p className='mt-2 text-xs text-slate-500'>PNG or JPG, max 2MB</p>
             </div>

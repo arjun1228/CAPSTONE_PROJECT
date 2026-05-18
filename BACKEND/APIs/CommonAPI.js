@@ -112,7 +112,7 @@ commonRouter.get("/check-auth", verifyToken("USER", "AUTHOR", "ADMIN"), async (r
 commonRouter.get("/articles/:id", verifyToken("USER", "AUTHOR", "ADMIN"), async (req, res, next) => {
   try {
     const article = await ArticleModel.findById(req.params.id)
-      .populate("author", "firstName email")
+      .populate("author", "firstName lastName email")
       .populate("Comments.user", "firstName email")
 
     if (!article) {

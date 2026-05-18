@@ -1,3 +1,4 @@
+// Entry point
 import exp from "express";
 import { connect } from "mongoose";
 import { config } from "dotenv";
@@ -20,7 +21,7 @@ const app = exp();
 
 // ================= CORS CONFIGURATION =================
 app.use(cors({
-  origin: ["http://localhost:5173", "http://localhost:5174"],
+  origin: ["http://localhost:5173", "http://localhost:5174", "http://localhost:5175", "http://localhost:5176"],
   credentials: true,
   methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
   allowedHeaders: ["Origin", "X-Requested-With", "Content-Type", "Accept", "Authorization"]

@@ -11,11 +11,11 @@ export const checkAuthor = async (req,res,next) => {
     }
     ///if author is found but role is different 
     if(verifyAuthor.role !== "AUTHOR") {
-        return res.status(403).json({message:"User is not an author"})
+        return res.status(403).json({error:`User role in DB is ${verifyAuthor.role}, not AUTHOR`})
     }
     //if author is blocked
     if(!verifyAuthor.isActive) {
-        return res.status(403).json({message:"Author account is not active"})
+        return res.status(403).json({error:"Author account is not active in DB"})
     }
     //forward req to next
     next();

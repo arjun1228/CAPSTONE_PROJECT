@@ -52,16 +52,26 @@ authorRoute.post("/users", upload.single("profileImageURL"), async (req, res, ne
 
 
 //create article (PROTECTED)
-authorRoute.post('/articles',verifyToken("AUTHOR"), checkAuthor, async (req,res) => {
-    //get article from req
-    let articleObj = req.body
-    //check for the author it is done by middleware
-    //create article doc
-    let articleDoc = await new ArticleModel(articleObj)
-    //save 
-    let newArticelObj = await articleDoc.save()
-    //send res
-    res.status(201).json({message:"Article Created",payload:newArticelObj})
+authorRoute.post('/articles', verifyToken("AUTHOR"), checkAuthor, async (req, res, next) => {
+    try {
+        //get article from req
+        let articleObj = req.body
+
+        // Basic validation
+        if (!articleObj.title || !articleObj.Category || !articleObj.Content) {
+            return res.status(400).json({ message: "title, Category, and Content are required" })
+        }
+
+        //check for the author it is done by middleware
+        //create article doc
+        let articleDoc = new ArticleModel(articleObj)
+        //save 
+        let newArticelObj = await articleDoc.save()
+        //send res
+        res.status(201).json({ message: "Article Created", payload: newArticelObj })
+    } catch (err) {
+        next(err)
+    }
 })
 
 

@@ -64,7 +64,7 @@ export const authenticate = async ({email,password}) => {
             profileImageURL: user.profileImageURL,
         },
         process.env.JWT_SECRET,
-        { expiresIn: "1h" }
+        { expiresIn: "1d" }
     )
     const userObj = user.toObject();
     delete userObj.password;

@@ -56,7 +56,7 @@ commonRouter.get("/logout", (req, res) => {
 
 // ================= CHANGE PASSWORD =================
 
-commonRouter.put("/change-password", verifyToken, async (req, res, next) => {
+commonRouter.put("/change-password", verifyToken("USER", "AUTHOR", "ADMIN"), async (req, res, next) => {
 
   try {
 

@@ -21,13 +21,7 @@ const app = exp();
 
 // ================= CORS CONFIGURATION =================
 app.use(cors({
-  origin: [
-    "http://localhost:5173", 
-    "http://localhost:5174", 
-    "http://localhost:5175", 
-    "http://localhost:5176",
-    process.env.FRONTEND_URL
-  ].filter(Boolean),
+  origin: true, // Reflects the request origin, allowing any domain to connect
   credentials: true,
   methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
   allowedHeaders: ["Origin", "X-Requested-With", "Content-Type", "Accept", "Authorization"]

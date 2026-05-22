@@ -20,8 +20,8 @@ commonRouter.post("/login", async (req, res, next) => {
     // save token in cookie
     res.cookie("token", token, {
       httpOnly: true,
-      sameSite: "lax",
-      secure: false,
+      sameSite: "none",
+      secure: true,
       maxAge: 24 * 60 * 60 * 1000, // 1 day
       path: "/"
     });
@@ -43,8 +43,8 @@ commonRouter.get("/logout", (req, res) => {
 
   res.clearCookie("token", {
     httpOnly: true,
-    secure: false,
-    sameSite: "lax",
+    secure: true,
+    sameSite: "none",
     path: "/"
   });
 

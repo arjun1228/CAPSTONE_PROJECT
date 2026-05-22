@@ -37,7 +37,7 @@ function WriteArticle() {
     delete articleObj.content;
     try {
       await axios.post(
-        "http://localhost:4000/author-api/articles",
+        `${import.meta.env.VITE_BACKEND_URL}/author-api/articles`,
         articleObj,
         { withCredentials: true }
       );

@@ -51,7 +51,7 @@ function EditArticle() {
       setPageError("");
 
       try {
-        const res = await axios.get(`http://localhost:4000/author-api/articles/${authorId}`, {
+        const res = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/author-api/articles/${authorId}`, {
           withCredentials: true,
         });
 
@@ -87,7 +87,7 @@ function EditArticle() {
         Content: data.Content,
       };
 
-      const res = await axios.put("http://localhost:4000/author-api/articles", payload, {
+      const res = await axios.put(`${import.meta.env.VITE_BACKEND_URL}/author-api/articles`, payload, {
         withCredentials: true,
       });
 

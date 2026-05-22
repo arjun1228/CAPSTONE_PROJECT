@@ -23,7 +23,7 @@ function UserDashboard() {
       setLoading(true)
       setError(null)
       try {
-        const res = await axios.get('http://localhost:4000/user-api/articles')
+        const res = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/user-api/articles`)
         setArticles(res.data.payload || [])
       } catch (err) {
         setError(err.response?.data?.message || err.message)

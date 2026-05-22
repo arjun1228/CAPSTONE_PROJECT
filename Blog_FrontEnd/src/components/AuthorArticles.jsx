@@ -31,7 +31,7 @@ function AuthorArticles() {
 
       try {
         const authorId = user?._id || user?.userId;
-        const res = await axios.get(`http://localhost:4000/author-api/articles/${authorId}`, { withCredentials: true });
+        const res = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/author-api/articles/${authorId}`, { withCredentials: true });
 
         setArticles(res.data.payload);
       } catch (err) {

@@ -44,8 +44,8 @@ function Register() {
       setLoading(true)
 
       const endpoint = role === "AUTHOR"
-        ? "http://localhost:4000/author-api/users"
-        : "http://localhost:4000/user-api/users"
+        ? `${import.meta.env.VITE_BACKEND_URL}/author-api/users`
+        : `${import.meta.env.VITE_BACKEND_URL}/user-api/users`
 
       const res = await axios.post(endpoint, formData)
       console.log("res obj is ", res)

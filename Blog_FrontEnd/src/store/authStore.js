@@ -4,7 +4,7 @@ import axios from "axios";
 import { toast } from "react-hot-toast";
 
 // axios global configuration
-axios.defaults.baseURL = "http://localhost:4000";
+axios.defaults.baseURL = `${import.meta.env.VITE_BACKEND_URL}`;
 axios.defaults.withCredentials = true;
 
 export const useAuth = create(

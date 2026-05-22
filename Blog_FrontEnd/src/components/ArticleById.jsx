@@ -45,7 +45,7 @@ function ArticleByID() {
       setLoading(true);
 
       try {
-        const res = await axios.get(`http://localhost:4000/common-api/articles/${id}`, { withCredentials: true });
+        const res = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/common-api/articles/${id}`, { withCredentials: true });
 
         setArticle(res.data.payload);
       } catch (err) {
@@ -60,7 +60,7 @@ function ArticleByID() {
 
   const refreshArticle = async () => {
     try {
-      const res = await axios.get(`http://localhost:4000/common-api/articles/${id}`, { withCredentials: true });
+      const res = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/common-api/articles/${id}`, { withCredentials: true });
       setArticle(res.data.payload);
     } catch (err) {
       setError(err.response?.data?.message || err.message);
@@ -84,7 +84,7 @@ function ArticleByID() {
 
     try {
       const res = await axios.patch(
-        `http://localhost:4000/author-api/articles/${id}/status`,
+        `${import.meta.env.VITE_BACKEND_URL}/author-api/articles/${id}/status`,
         { isArticleActive: newStatus },
         { withCredentials: true },
       );
@@ -122,7 +122,7 @@ function ArticleByID() {
     setCommentLoading(true);
     try {
       await axios.put(
-        "http://localhost:4000/user-api/articles",
+        `${import.meta.env.VITE_BACKEND_URL}/user-api/articles`,
         { articleId: id, comment: comment.trim() },
         { withCredentials: true }
       );

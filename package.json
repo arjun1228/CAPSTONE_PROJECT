@@ -4,10 +4,11 @@
     "description":  "1. Create git repo\r     git init",
     "main":  "server.js",
     "scripts":  {
+                    "start": "node BACKEND/server.js",
                     "test":  "echo \"Error: no test specified\" \u0026\u0026 exit 1",
                     "dev":  "npm run dev --prefix Blog_FrontEnd",
                     "dev:frontend":  "npm run dev --prefix Blog_FrontEnd",
-                    "dev:backend":  "node server.js"
+                    "dev:backend":  "node BACKEND/server.js"
                 },
     "keywords":  [
 
